@@ -11,16 +11,16 @@
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(); //LoginPage.xaml
+            //await Navigation.PushModalAsync(); //LoginPage.xaml
         }
         private async void OnInfoClicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(); //InfoPage.xaml
+            await Navigation.PushModalAsync(new InfoPage()); //InfoPage.xaml
         }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            string[] logindata = File.ReadAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"\", "login.dat"));
+            string logindata = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"\", "login.dat");
         }
     }
     public class AppInfo
@@ -30,7 +30,7 @@
         public int ServerPort { get; set; }
         public AppInfo()
         {
-            Version = "0.0.1";
+            Version = "0.0.2";
             ServerIP = "127.0.0.1";
             ServerPort = 33533;
         }
