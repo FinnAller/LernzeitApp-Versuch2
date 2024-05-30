@@ -16,7 +16,7 @@ Administratoren werden bis auf weiteres nicht über die App selbst zugreiffen, s
 Schüler und Lehrer verwenden die gleiche App, die Zugriffsstufe wird in der Datenbank festgestellt. Die App ruft anhand der Informationen verschieden Overlays auf.
 
 ## Verify
-Verify ist der Prozess, bei dem Nutzerdaten an den Server geschickt werden, und ein Status zurückgegeben wird.
+Verify ist der Prozess, bei dem Nutzerdaten an den Server geschickt werden, und ein Status zurückgegeben wird.  
 Aufbau:  
 ```verify\r\n1```  
 Stati:  
