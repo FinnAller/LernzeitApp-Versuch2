@@ -15,8 +15,8 @@ Administratoren werden bis auf weiteres nicht über die App selbst zugreiffen, s
 
 Schüler und Lehrer verwenden die gleiche App, die Zugriffsstufe wird in der Datenbank festgestellt. Die App ruft anhand der Informationen verschieden Overlays auf.
 
-## Verify-Methode
-Die Verify-Methode sendet Nutzerdaten an den Server, und gibt einen Status zurück
+## Verify
+Verify ist der Prozess, bei dem Nutzerdaten an den Server geschickt werden, und ein Status zurückgegeben wird.
 Stati:
 0 = Falsches Password/Falsche Email
 1 = Schülerkonto verifiziert
