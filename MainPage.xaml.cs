@@ -11,7 +11,7 @@
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
-            //await Navigation.PushModalAsync(); //LoginPage.xaml
+            await Navigation.PushModalAsync(new LoginPage()); //LoginPage.xaml
         }
         private async void OnInfoClicked(object sender, EventArgs e)
         {
@@ -21,6 +21,17 @@
         {
             base.OnAppearing();
             string logindata = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"\", "login.dat");
+            if (File.Exists(logindata))
+            {
+                try
+                {
+                    //Verify
+                }
+                catch (Exception ex)
+                {
+                    //Throw exception
+                }
+            }
         }
     }
     public class AppInfo
@@ -30,7 +41,7 @@
         public int ServerPort { get; set; }
         public AppInfo()
         {
-            Version = "0.0.2";
+            Version = "0.0.3";
             ServerIP = "127.0.0.1";
             ServerPort = 33533;
         }

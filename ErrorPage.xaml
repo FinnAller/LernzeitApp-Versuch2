@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LernzeitApp_Versuch2.ErrorPage"
+             Title="Error">
+    <VerticalStackLayout>
+        <Label
+            Style="{StaticResource Headline}"
+            TextColor="Red"
+            Text="Ein Fehler ist aufgetreten!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label
+            Style="{StaticResource Label}"
+            Text="Prüfe deine Internetverbindung&#10;Starte die App neu&#10;Kontaktiere einen Administrator"/>
+        <Label
+            x:Name="ErrorMessage"
+            Text=""
+            Style="{StaticResource Label}"
+            FontSize="14"/>
+    </VerticalStackLayout>
+</ContentPage>

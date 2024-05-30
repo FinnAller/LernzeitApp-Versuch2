@@ -11,5 +11,17 @@
         <Label 
             Text="Informationen"
             Style="{StaticResource Headline}"/>
+        <Label
+            Text="Diese App wurde von Jork Buchholz für das Lise-Meitner Gymnasium Leverkusen entwickelt."
+            Style="{StaticResource Label}"/>
+        <Label
+            Style="{StaticResource Headline}"
+            Text="Datenschutz und Verarbeitung"/>
+        <Label
+            Style="{StaticResource Label}"
+            Text="Diese App verarbeitet Daten wie z.B:&#10;IP-Adressen"/>
+        <Label
+            Style="{StaticResource Label}"
+            Text="Die App greifft NICHT auf Daten ausserhalb der App zu"/>
     </VerticalStackLayout>
 </ContentPage>
