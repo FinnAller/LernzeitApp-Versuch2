@@ -17,6 +17,8 @@ Schüler und Lehrer verwenden die gleiche App, die Zugriffsstufe wird in der Dat
 
 ## Verify
 Verify ist der Prozess, bei dem Nutzerdaten an den Server geschickt werden, und ein Status zurückgegeben wird.
+Aufbau:
+```verify\r\n1```
 Stati:
 0 = Falsches Password/Falsche Email
 1 = Schülerkonto verifiziert
