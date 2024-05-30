@@ -9,8 +9,25 @@
             Style="{StaticResource ReturnButton}"
             Clicked="OnBackClicked"/>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Style="{StaticResource Headline}"
+            Text="Log In"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" 
+            Margin="10, 10, 10, 20"/>
+        <Entry
+            Margin="10, 10, 10, 10"
+            Placeholder="name.nachname@lmg.schulen-lev.de"
+            IsPassword="False"
+            FontSize="18"
+            Text="{Binding InputEmail}"/>
+        <Entry
+            Margin="10, 10, 10, 30"
+            Placeholder="Passwort"
+            IsPassword="True"
+            FontSize="18"
+            Text="{Binding InputPassword}"/>
+        <Button
+            Style="{StaticResource Button}"
+            Text="Log In"/>
     </VerticalStackLayout>
 </ContentPage>

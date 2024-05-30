@@ -101,7 +101,7 @@ namespace LernzeitApp_Versuch2
         public int ServerPort { get; set; }
         public AppInfo()
         {
-            Version = "0.0.5";
+            Version = "0.0.6";
             ServerIP = "127.0.0.1";
             ServerPort = 33533;
         }

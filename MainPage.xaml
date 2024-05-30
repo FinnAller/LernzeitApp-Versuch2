@@ -11,6 +11,7 @@
             <Image
                 Source="logo.png"
                 HeightRequest="90"
+                Margin="0, 10, 0, 0"
                 Aspect="AspectFit"/>
             <Label
                 Text="Wilkommen zur&#10;Lise-Meitner&#10;Lernzeit-App!"
