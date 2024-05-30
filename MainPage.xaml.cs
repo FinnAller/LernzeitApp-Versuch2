@@ -51,7 +51,30 @@ namespace LernzeitApp_Versuch2
                             int bytes = await stream.ReadAsync(responseBytes, 0, responseBytes.Length);
                             string responsestring = Encoding.UTF8.GetString(responseBytes);
                             string[] response = responsestring.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-                            if(response.Length == )
+                            if(response.Length == 2 && response[0] == "verify")
+                            {
+                                switch (response[1])
+                                {
+                                    case "0":
+                                        File.Delete(logindatapath);
+                                        break;
+                                    case "1":
+                                        //SchülerLogin Hier!
+                                        break;
+                                    case "2":
+                                        //LehrerLogin Hier!
+                                        break;
+                                    default:
+                                        Exception InvalidResponse = new Exception("Server response invalid");
+                                        TriggerError(InvalidResponse);
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                Exception InvalidResponse = new Exception("Server response invalid");
+                                TriggerError(InvalidResponse);
+                            }
                         }
                     }
                     else
@@ -78,7 +101,7 @@ namespace LernzeitApp_Versuch2
         public int ServerPort { get; set; }
         public AppInfo()
         {
-            Version = "0.0.4";
+            Version = "0.0.5";
             ServerIP = "127.0.0.1";
             ServerPort = 33533;
         }
