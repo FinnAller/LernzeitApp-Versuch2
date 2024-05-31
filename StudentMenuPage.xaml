@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LernzeitApp_Versuch2.StudentMenuPage"
+             Title="StudentMenuPage">
+    <VerticalStackLayout>
+        <Label 
+            Text="Menü"
+            Style="{StaticResource Headline}"
+            FontSize="40"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            />
+        <Button
+            Text="Support"
+            Style="{StaticResource Button}"
+            Margin="15"
+            Clicked="OnSupportClicked"
+            />
+        <Button
+            Text="Feedback"
+            Style="{StaticResource Button}"
+            Margin="15"
+            Clicked="OnFeedbackClicked"
+            />
+        <Button
+            Text="Lernzeitenübersicht"
+            Style="{StaticResource Button}"
+            Clicked="OnOverviewClicked"
+            Margin="15"
+            />
+        <Button
+            Text="Informationen"
+            Style="{StaticResource Button}"
+            Clicked="OnInfoClicked"
+            Margin="15"
+            />
+        <Button
+            Text="Abmelden"
+            x:Name="LogoutBtn"
+            Style="{StaticResource Button}"
+            Clicked="OnLogoutClicked"
+            Margin="15"
+            />
+        <Label
+            Text=""
+            x:Name="CurrentEmailLabel"
+            Style="{StaticResource Label}"
+            />
+        <Label
+            Text=""
+            x:Name="CurrentVersionLabel"
+            Style="{StaticResource Label}"
+            />
+    </VerticalStackLayout>
+</ContentPage>

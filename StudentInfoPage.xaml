@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LernzeitApp_Versuch2.StudentInfoPage"
+             Title="StudentInfoPage">
+    <VerticalStackLayout>
+        <Button
+         Style="{StaticResource ReturnButton}"
+         Text="Zurück"
+         Clicked="OnBackClicked"/>
+        <Label 
+         Text="Informationen"
+         Style="{StaticResource Headline}"/>
+        <Label
+         Text="Diese App wurde von Jork Buchholz für das Lise-Meitner Gymnasium Leverkusen entwickelt."
+         Style="{StaticResource Label}"/>
+        <Label
+         Style="{StaticResource Headline}"
+         Text="Datenschutz und Verarbeitung"/>
+        <Label
+         Style="{StaticResource Label}"
+         Text="Diese App verarbeitet Daten wie z.B:&#10;IP-Adressen"/>
+        <Label
+         Style="{StaticResource Label}"
+         Text="Die App greifft NICHT auf Daten ausserhalb der App zu"/>
+    </VerticalStackLayout>
+</ContentPage>

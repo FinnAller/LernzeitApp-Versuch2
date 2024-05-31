@@ -25,7 +25,7 @@ public partial class StudentModulOverviewPage : ContentPage
     {
         await Navigation.PushModalAsync(new StudentHomePage());
     }
-    private void OnParticipateClicked(object sender, EventArgs e)
+    private async void OnParticipateClicked(object sender, EventArgs e)
     {
         int EventID = Ereigniss.Id;
         try
@@ -54,6 +54,10 @@ public partial class StudentModulOverviewPage : ContentPage
         {
             TriggerError(ex);
         }
+    }
+    private async void OnMenuClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushModalAsync(new StudentInfoPage());
     }
     private async void TriggerError(object exception)
     {

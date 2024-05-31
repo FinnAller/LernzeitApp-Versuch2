@@ -5,6 +5,14 @@
              Title="StudentHomePage">
     <ScrollView>
         <VerticalStackLayout>
+            <Button
+                Text="Hautpmenü"
+                Margin="0, 0, 0, 10"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center"
+                FontSize="24"
+                Clicked="OnMenuClicked"
+                />
             <CollectionView ItemsSource="{Binding YourEventList}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

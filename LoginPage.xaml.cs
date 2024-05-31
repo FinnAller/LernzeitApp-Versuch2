@@ -20,9 +20,16 @@ namespace LernzeitApp_Versuch2
             var viewModel = (LoginPageViewModel)BindingContext;
             string email = viewModel.InputEmail;
             string password = viewModel.InputPassword;
-            if (true)//DEBUG CHANGE TO email.Length >= 26 && email.Contains("@lmg.schulen-lev.de") && password.Length >= 6
+            if(email == null)
             {
-                email = "ddddddddd";
+                email = System.String.Empty;
+            }
+            if(password == null)
+            {
+                password = System.String.Empty;
+            }
+            if (email.Length >= 26 && email.Contains("@lmg.schulen-lev.de") && password.Length >= 6)//DEBUG CHANGE TO true
+            {
                 string salt = email.Substring(0, 4);
                 SHA256 sHA256 = SHA256.Create();
                 byte[] hash_bytes = sHA256.ComputeHash(Encoding.UTF8.GetBytes(salt + password));
@@ -38,7 +45,14 @@ namespace LernzeitApp_Versuch2
                 }
                 if (acces == 1)
                 {
-                    Debug.WriteLine("stage");
+                    string[] logindata = new string[]
+                    {
+                        email,
+                        password,
+                        DateTime.Now.ToString()
+                    };
+                    LernzeitApp_Versuch2.AppInfo info = new AppInfo();
+                    File.WriteAllLines(info.LoginPath, logindata);
                     await Navigation.PushModalAsync(new StudentHomePage());
                 }
                 else if (acces == 2)

@@ -25,3 +25,10 @@ Stati:
 2 = Lehrerkonto  verifiziert   
 Aufbau der Antwort:  
 ```verify\r\n1```
+## Wechseln des ausgewählten Moduls
+Wenn ein Schüler seine Meinung ändert und ein anderes Modul besuchen möchte,  
+muss er nur den Teilnehmen-Knopf der neuen Auswahl drücken.
+## Aufbau login.dat
+0. Email
+1. Gehashtes Passwort
+2. Timestamp

@@ -19,4 +19,8 @@ public partial class StudentHomePage : ContentPage
             await Navigation.PushModalAsync(new StudentModulOverviewPage(tappedEvent));
         }
     }
+    private async void OnMenuClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushModalAsync(new StudentMenuPage());
+    }
 }

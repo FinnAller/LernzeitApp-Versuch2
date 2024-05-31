@@ -23,7 +23,8 @@ namespace LernzeitApp_Versuch2
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            string logindatapath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"\", "login.dat");
+            LernzeitApp_Versuch2.AppInfo info = new AppInfo();
+            string logindatapath = info.LoginPath;
             if (File.Exists(logindatapath))
             {
                 try
@@ -40,9 +41,10 @@ namespace LernzeitApp_Versuch2
                             File.Delete(logindatapath);
                         }
                         else
-                        {
+                        {/*
+                            DEBUG
                             TcpClient client = new TcpClient();
-                            AppInfo appinfo = new AppInfo();
+                            LernzeitApp_Versuch2.AppInfo appinfo = new AppInfo();
                             client.Connect(appinfo.ServerIP, appinfo.ServerPort);
                             NetworkStream stream = client.GetStream();
                             byte[] message = Encoding.UTF8.GetBytes($"verify\r\n{email}\r\n{hash}");
@@ -74,7 +76,7 @@ namespace LernzeitApp_Versuch2
                             {
                                 Exception InvalidResponse = new Exception("Server response invalid");
                                 TriggerError(InvalidResponse);
-                            }
+                            }*/
                         }
                     }
                     else
@@ -99,9 +101,11 @@ namespace LernzeitApp_Versuch2
         public string Version { get; set; }
         public string ServerIP { get; set; }
         public int ServerPort { get; set; }
+        public string LoginPath { get; set; }
         public AppInfo()
         {
-            Version = "0.0.8";
+            LoginPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "login.dat");
+            Version = "0.0.9";
             ServerIP = "127.0.0.1";
             ServerPort = 33533;
         }
