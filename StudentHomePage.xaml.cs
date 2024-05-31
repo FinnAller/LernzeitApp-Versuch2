@@ -16,7 +16,7 @@ public partial class StudentHomePage : ContentPage
         var tappedEvent = (sender as VisualElement).BindingContext as Ereigniss;
         if (tappedEvent != null)
         {
-            //await Navigation.PushAsync(new ModulOverviewPage(tappedEvent));
+            await Navigation.PushModalAsync(new StudentModulOverviewPage(tappedEvent));
         }
     }
 }

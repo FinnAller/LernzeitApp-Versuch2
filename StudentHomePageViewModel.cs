@@ -95,16 +95,16 @@ namespace LernzeitApp_Versuch2
             //Remote Liste aus DB abrufen und verarbeiten
             YourEventList = new List<Ereigniss>
             {
-                new Ereigniss { Name = "Schach-AG", StartTime = "09:00", Location = "Raum A", FreeSlots = "8"},
-                new Ereigniss { Name = "Schule ohne Rassismus", StartTime = "10:30", Location = "Raum B", FreeSlots = "3"},
-                new Ereigniss { Name= "Philosophie", StartTime = "15:00", Location = "Raum D", FreeSlots = "2"},
-                new Ereigniss { Name="Mathe-Lernzeit", StartTime = "12:55", Location = "Raum A"},
-                new Ereigniss { StartTime = "14:45", Location = "Raum D", Name = "Deutsch-Lernzeit", FreeSlots = "8"},
-                new Ereigniss { StartTime = "12:4", Location = "Raum E", FreeSlots = "16", Name = "Latein-Lernzeit"},
-                new Ereigniss { StartTime = "15:05", Location = "Raum A", Name = "Deutsch ?-Stunde", FreeSlots = "0"},
-                new Ereigniss { StartTime = "17:30", Location = "Raum C", Name = "Roboter-AG", FreeSlots = "1"},
-                new Ereigniss { StartTime = "9:00", Location = "Raum D", FreeSlots = "5", Name = "Kunst-AG"},
-                new Ereigniss { StartTime = "15:05", Location = "Raum B", FreeSlots = "14", Name = "SV-Sitzung"}
+                new Ereigniss { Name = "Schach-AG", StartTime = "09:00", Location = "Raum A", FreeSlots = "8", EndTime = "9:45"},
+                new Ereigniss { Name = "Schule ohne Rassismus", StartTime = "10:30", Location = "Raum B", FreeSlots = "3", EndTime = "11:30"},
+                new Ereigniss { Name= "Philosophie", StartTime = "15:00", Location = "Raum D", FreeSlots = "2", EndTime = "16:45"},
+                new Ereigniss { Name="Mathe-Lernzeit", StartTime = "12:55", Location = "Raum A", EndTime = "14:25"},
+                new Ereigniss { StartTime = "14:45", Location = "Raum D", Name = "Deutsch-Lernzeit", FreeSlots = "8", EndTime = "15:30"},
+                new Ereigniss { StartTime = "12:40", Location = "Raum E", FreeSlots = "16", Name = "Latein-Lernzeit", EndTime = "13:25"},
+                new Ereigniss { StartTime = "15:05", Location = "Raum A", Name = "Deutsch ?-Stunde", FreeSlots = "0", EndTime = "16:00"},
+                new Ereigniss { StartTime = "17:30", Location = "Raum C", Name = "Roboter-AG", FreeSlots = "1", EndTime = "18:15"},
+                new Ereigniss { StartTime = "9:00", Location = "Raum D", FreeSlots = "5", Name = "Kunst-AG", EndTime = "10:30"},
+                new Ereigniss { StartTime = "15:05", Location = "Raum B", FreeSlots = "14", Name = "SV-Sitzung", EndTime = "16:50"}
             };
         }
     }

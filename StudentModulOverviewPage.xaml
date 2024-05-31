@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LernzeitApp_Versuch2.StudentModulOverviewPage"
+             Title="StudentModulOverviewPage">
+    <VerticalStackLayout>
+        <Button
+            Text="Zurück"
+            Style="{StaticResource ReturnButton}"
+            Clicked="OnBackClicked"/>
+        <Label 
+            Style="{StaticResource SubHeadline}"
+            Text="Modulübersicht"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label
+            Style="{StaticResource Headline}"
+            Text=""
+            x:Name="EventNameLabel"/>
+        <Label
+            Style="{StaticResource Label}"
+            Text=""
+            x:Name="EventBeginningLabel"/>
+        <Label
+            Style="{StaticResource Label}"
+            Text=""
+            x:Name="EventLocationLabel"/>
+        <Button
+            Text="Teilnehmen"
+            FontSize="22"
+            Margin="10"
+            x:Name="ParticipateBtn"
+            Clicked="OnParticipateClicked"/>
+        <Label
+            Text=""
+            FontSize="14"
+            TextColor="Red"
+            x:Name="ButtonError"/>
+    </VerticalStackLayout>
+</ContentPage>
