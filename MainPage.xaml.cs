@@ -59,7 +59,7 @@ namespace LernzeitApp_Versuch2
                                         File.Delete(logindatapath);
                                         break;
                                     case "1":
-                                        //SchülerLogin Hier!
+                                        await Navigation.PushModalAsync(new StudentHomePage());
                                         break;
                                     case "2":
                                         //LehrerLogin Hier!
@@ -101,7 +101,7 @@ namespace LernzeitApp_Versuch2
         public int ServerPort { get; set; }
         public AppInfo()
         {
-            Version = "0.0.6";
+            Version = "0.0.7";
             ServerIP = "127.0.0.1";
             ServerPort = 33533;
         }

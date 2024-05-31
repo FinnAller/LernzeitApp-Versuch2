@@ -28,6 +28,12 @@
             Text="{Binding InputPassword}"/>
         <Button
             Style="{StaticResource Button}"
-            Text="Log In"/>
+            Text="Log In"
+            Clicked="OnLoginClicked"/>
+        <Label
+            Style="{StaticResource Label}"
+            TextColor="Red"
+            x:Name="ErrorLabel"
+            Text="{Binding ErrorMessage}"/>
     </VerticalStackLayout>
 </ContentPage>
