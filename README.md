@@ -19,12 +19,20 @@ Schüler und Lehrer verwenden die gleiche App, die Zugriffsstufe wird in der Dat
 Verify ist der Prozess, bei dem Nutzerdaten an den Server geschickt werden, und ein Status zurückgegeben wird.  
 Aufbau der Nachicht:  
 ```verify\r\nmax.mustermann@lmg.schulen-lev.de```  
+Aufbau der Antwort:  
+```verify\r\n1```
 Stati:  
 0 = Falsches Password/Falsche Email  
 1 = Schülerkonto verifiziert  
 2 = Lehrerkonto  verifiziert   
-Aufbau der Antwort:  
-```verify\r\n1```
+## GetMods
+Getmods ruft eine Liste aller verfügbarer Module auf
+Aufbau der Nachicht:
+´´´getmods´´´
+Aufbau der Antowrt:
+´´´getmods\rSchachAG\n9:00\n9:45\n4203\n8\n15\rSchule ohne Rassismus\n10:30\n11:00\n3009\n8\n3\n20\n´´´
+0.      Header
+1 - 999 Content
 ## Wechseln des ausgewählten Moduls
 Wenn ein Schüler seine Meinung ändert und ein anderes Modul besuchen möchte,  
 muss er nur den Teilnehmen-Knopf der neuen Auswahl drücken.
