@@ -18,13 +18,13 @@
             Margin="10, 10, 10, 10"
             Placeholder="name.nachname@lmg.schulen-lev.de"
             IsPassword="False"
-            FontSize="18"
+            FontSize="17"
             Text="{Binding InputEmail}"/>
         <Entry
             Margin="10, 10, 10, 30"
             Placeholder="Passwort"
             IsPassword="True"
-            FontSize="18"
+            FontSize="17"
             Text="{Binding InputPassword}"/>
         <Button
             Style="{StaticResource Button}"

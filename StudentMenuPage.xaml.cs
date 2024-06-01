@@ -15,7 +15,7 @@ public partial class StudentMenuPage : ContentPage
 		{
 			string[] content = File.ReadAllLines(path);
             CurrentEmailLabel.Text = $"{content[0]}";
-            CurrentVersionLabel.Text = $"{info.Version}";
+            CurrentVersionLabel.Text = $"Version {info.Version}";
         }
 		else
 		{
@@ -53,7 +53,7 @@ public partial class StudentMenuPage : ContentPage
 				TriggerError(exception);
 			}
             clicked++;
-            //APP Beenden
+			Application.Current.Quit();
         }
 		else if(clicked == 0)
 		{

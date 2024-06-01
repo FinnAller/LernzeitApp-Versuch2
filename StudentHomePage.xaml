@@ -3,102 +3,112 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LernzeitApp_Versuch2.StudentHomePage"
              Title="StudentHomePage">
-    <ScrollView>
-        <VerticalStackLayout>
-            <Button
-                Text="Hautpmenü"
-                Margin="0, 0, 0, 10"
-                HorizontalOptions="Fill"
-                VerticalOptions="Center"
-                FontSize="24"
-                Clicked="OnMenuClicked"
-                />
-            <CollectionView ItemsSource="{Binding YourEventList}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid
-                            BackgroundColor="Wheat"
-                            Margin="5, 10, 0, 10">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnEventTapped"/>
-                            </Grid.GestureRecognizers>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label
-                                Text="{Binding Name}"
-                                Grid.Row="0"
-                                TextColor="Black"
-                                Grid.ColumnSpan="2"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                FontSize="26"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button
+            Text="Hauptmenü"
+            Margin="0, 0, 0, 10"
+            HorizontalOptions="Fill"
+            VerticalOptions="Start"
+            FontSize="24"
+            Clicked="OnMenuClicked"
+            Grid.Row="0"
+            CornerRadius="0"
+        />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout>
+                <CollectionView ItemsSource="{Binding YourEventList}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                BackgroundColor="Wheat"
+                                Margin="5, 10, 0, 10">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnEventTapped"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Text="{Binding Name}"
+                                    Grid.Row="0"
+                                    TextColor="Black"
+                                    Grid.ColumnSpan="2"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    FontSize="26"
                                 />
-                            <Label
-                                Text="Uhrzeit:"
-                                TextColor="Black"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Start"
-                                FontSize="20"
+                                <Label
+                                    Text="Uhrzeit:"
+                                    TextColor="Black"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"
+                                    FontSize="20"
                                 />
-                            <Label 
-                                Text="{Binding StartTime}"
-                                Grid.Row="1"
-                                TextColor="Black"
-                                Grid.Column="1"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                FontSize="20"
+                                <Label 
+                                    Text="{Binding StartTime}"
+                                    Grid.Row="1"
+                                    TextColor="Black"
+                                    Grid.Column="1"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    FontSize="20"
                                 />
-                            <Label
-                                Text="Raum:"
-                                TextColor="Black"
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Start"
-                                FontSize="20"
+                                <Label
+                                    Text="Raum:"
+                                    TextColor="Black"
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"
+                                    FontSize="20"
                                 />
-                            <Label
-                                Text="{Binding Location}"
-                                TextColor="Black"
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                FontSize="20"
+                                <Label
+                                    Text="{Binding Location}"
+                                    TextColor="Black"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    FontSize="20"
                                 />
-                            <Label
-                                Text="Freie Plätze:"
-                                TextColor="Black"
-                                Grid.Row="3"
-                                Grid.Column="0"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Start"
-                                FontSize="20"
+                                <Label
+                                    Text="Freie Plätze:"
+                                    TextColor="Black"
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"
+                                    FontSize="20"
                                 />
-                            <Label
-                                Text="{Binding FreeSlots}"
-                                TextColor="Black"
-                                Grid.Row="3"
-                                Grid.Column="1"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                FontSize="20"
+                                <Label
+                                    Text="{Binding FreeSlots}"
+                                    TextColor="Black"
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    FontSize="20"
                                 />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </VerticalStackLayout>
-    </ScrollView>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

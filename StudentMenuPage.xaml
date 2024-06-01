@@ -43,9 +43,15 @@
             Margin="15"
             />
         <Label
-            Text=""
+            Text="Angemeldet als:"
+            Style="{StaticResource Label}"
+            FontSize="16"
+            />
+        <Label
+            Text="FEHLER"
             x:Name="CurrentEmailLabel"
             Style="{StaticResource Label}"
+            FontSize="16"
             />
         <Label
             Text=""
