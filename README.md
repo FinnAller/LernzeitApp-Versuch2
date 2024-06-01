@@ -31,8 +31,8 @@ Aufbau der Nachicht:
 ```getmods```  
 Aufbau der Antowrt:  
 ```getmods\rSchachAG\n9:00\n9:45\n4203\n8\n15\rSchule ohne Rassismus\n10:30\n11:00\n3009\n8\n3\n20\n```  
-0.      Header
-1 - 999 Content
+0.      Header  
+1 - 999 Content  
 ## Wechseln des ausgewählten Moduls
 Wenn ein Schüler seine Meinung ändert und ein anderes Modul besuchen möchte,  
 muss er nur den Teilnehmen-Knopf der neuen Auswahl drücken.
