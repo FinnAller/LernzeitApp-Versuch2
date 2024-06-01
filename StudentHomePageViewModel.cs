@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Maui.ApplicationModel.Communication;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -92,7 +94,9 @@ namespace LernzeitApp_Versuch2
 
         public HomePageViewModel()
         {
-            //Remote Liste aus DB abrufen und verarbeiten
+            List<Ereigniss> ereignisse = GetModules();
+            YourEventList = ereignisse;
+            /*
             YourEventList = new List<Ereigniss>
             {
                 new Ereigniss { Name = "Schach-AG", StartTime = "09:00", Location = "Raum A", FreeSlots = "8", EndTime = "9:45"},
@@ -106,6 +110,55 @@ namespace LernzeitApp_Versuch2
                 new Ereigniss { StartTime = "9:00", Location = "Raum D", FreeSlots = "5", Name = "Kunst-AG", EndTime = "10:30"},
                 new Ereigniss { StartTime = "15:05", Location = "Raum B", FreeSlots = "14", Name = "SV-Sitzung", EndTime = "16:50"}
             };
+            */
+        }
+        private List<Ereigniss> GetModules()
+        {
+            List<Ereigniss> ereignisse = new List<Ereigniss>();
+            LernzeitApp_Versuch2.AppInfo info = new AppInfo();
+            try
+            {
+                TcpClient client = new TcpClient();
+                client.Connect(info.ServerIP, info.ServerPort);
+                NetworkStream stream = client.GetStream();
+                byte[] message = Encoding.UTF8.GetBytes($"getmods");
+                stream.Write(message, 0, message.Length);
+                byte[] responseBytes = new byte[256];
+                Thread.Sleep(300);
+                int bytes = stream.Read(responseBytes, 0, responseBytes.Length);
+                string responsestring = Encoding.UTF8.GetString(responseBytes);
+                string[] response = responsestring.Split(new string[] { "\r" }, StringSplitOptions.None);
+                if (response[0] == "getmods")
+                {
+                    for (int i = 1; i < response.Length; i++)
+                    {
+                        Ereigniss current = new Ereigniss();
+                        string[] parameters = response[i].Split(new string[] { "\n" }, StringSplitOptions.None);
+                        current.Name = parameters[0];
+                        current.StartTime = parameters[1];
+                        current.EndTime = parameters[2];
+                        current.Location = parameters[3];
+                        current.FreeSlots = parameters[4];
+                        current.MaxSlots = parameters[5];
+                        ereignisse.Add(current);
+                    }
+                    return ereignisse;
+                }
+                else
+                {
+                    Ereigniss error_ereigniss = new Ereigniss();
+                    error_ereigniss.Name = "Error";
+                    ereignisse.Add(error_ereigniss);
+                    return ereignisse;
+                }
+            }
+            catch (Exception ex)
+            {
+                Ereigniss error_ereigniss = new Ereigniss();
+                error_ereigniss.Name = "Error";
+                ereignisse.Add(error_ereigniss);
+                return ereignisse;
+            }
         }
     }
 }

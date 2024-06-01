@@ -19,12 +19,14 @@
             Placeholder="name.nachname@lmg.schulen-lev.de"
             IsPassword="False"
             FontSize="17"
+            x:Name="EmailEntry"
             Text="{Binding InputEmail}"/>
         <Entry
             Margin="10, 10, 10, 30"
             Placeholder="Passwort"
             IsPassword="True"
             FontSize="17"
+            x:Name="PasswordEntry"
             Text="{Binding InputPassword}"/>
         <Button
             Style="{StaticResource Button}"
