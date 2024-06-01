@@ -26,7 +26,7 @@ Stati:
 1 = Schülerkonto verifiziert  
 2 = Lehrerkonto  verifiziert   
 ## GetMods
-Getmods ruft eine Liste aller verfügbarer Module auf
+Getmods ruft eine Liste aller verfügbarer Module auf  
 Aufbau der Nachicht:
 ```getmods```  
 Aufbau der Antowrt:  
