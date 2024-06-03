@@ -9,17 +9,6 @@ public partial class StudentHomePage : ContentPage
     {
         InitializeComponent();
         BindingContext = new HomePageViewModel();
-        var ErrorDetection = new HomePageViewModel();
-        for(int i = 0; i < ErrorDetection.YourEventList.Count; i++)
-        {
-            if (ErrorDetection.YourEventList[i].Name == "Error")
-            {
-                Exception exception = new Exception("Failed to receive critical data!");
-                TriggerError(exception);
-            }
-        }
-        
-
     }
     protected async override void OnAppearing()
     {

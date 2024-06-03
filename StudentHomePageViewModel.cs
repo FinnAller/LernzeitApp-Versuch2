@@ -96,8 +96,11 @@ namespace LernzeitApp_Versuch2
         {
             List<Ereigniss> ereignisse = GetModules();
             YourEventList = ereignisse;
-            /*
-            YourEventList = new List<Ereigniss>
+        }
+        private List<Ereigniss> GetModules()
+        {
+            //List<Ereigniss> ereignisse = new List<Ereigniss>();
+            List<Ereigniss> ereignisse = new List<Ereigniss>()//DEBUG
             {
                 new Ereigniss { Name = "Schach-AG", StartTime = "09:00", Location = "Raum A", FreeSlots = "8", EndTime = "9:45"},
                 new Ereigniss { Name = "Schule ohne Rassismus", StartTime = "10:30", Location = "Raum B", FreeSlots = "3", EndTime = "11:30"},
@@ -109,12 +112,7 @@ namespace LernzeitApp_Versuch2
                 new Ereigniss { StartTime = "17:30", Location = "Raum C", Name = "Roboter-AG", FreeSlots = "1", EndTime = "18:15"},
                 new Ereigniss { StartTime = "9:00", Location = "Raum D", FreeSlots = "5", Name = "Kunst-AG", EndTime = "10:30"},
                 new Ereigniss { StartTime = "15:05", Location = "Raum B", FreeSlots = "14", Name = "SV-Sitzung", EndTime = "16:50"}
-            };
-            */
-        }
-        private List<Ereigniss> GetModules()
-        {
-            List<Ereigniss> ereignisse = new List<Ereigniss>();
+            };//DEBUG END
             LernzeitApp_Versuch2.AppInfo info = new AppInfo();
             try
             {

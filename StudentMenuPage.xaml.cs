@@ -75,6 +75,10 @@ public partial class StudentMenuPage : ContentPage
 	{
 		//
 	}
+	private async void OnMissingLessonsClicked(object sender, EventArgs e)
+	{
+		Navigation.PushModalAsync(new StudentMissingLessonPage());
+	}
     private async void TriggerError(object exception)
     {
         await Navigation.PushModalAsync(new ErrorPage(exception));

@@ -12,6 +12,18 @@
             HorizontalOptions="Center"
             />
         <Button
+            Text="Lernzeitenübersicht"
+            Style="{StaticResource Button}"
+            Clicked="OnOverviewClicked"
+            Margin="15"
+            />
+        <Button
+            Text="Fehlstunden"
+            Style="{StaticResource Button}"
+            Clicked="OnMissingLessonsClicked"
+            Margin="15"
+            />
+        <Button
             Text="Support"
             Style="{StaticResource Button}"
             Margin="15"
@@ -22,12 +34,6 @@
             Style="{StaticResource Button}"
             Margin="15"
             Clicked="OnFeedbackClicked"
-            />
-        <Button
-            Text="Lernzeitenübersicht"
-            Style="{StaticResource Button}"
-            Clicked="OnOverviewClicked"
-            Margin="15"
             />
         <Button
             Text="Informationen"
@@ -50,6 +56,11 @@
         <Label
             Text="FEHLER"
             x:Name="CurrentEmailLabel"
+            Style="{StaticResource Label}"
+            FontSize="16"
+            />
+        <Label
+            Text="Schüler"
             Style="{StaticResource Label}"
             FontSize="16"
             />

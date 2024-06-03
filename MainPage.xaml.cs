@@ -105,7 +105,7 @@ namespace LernzeitApp_Versuch2
         public AppInfo()
         {
             LoginPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "login.dat");
-            Version = "0.0.10.1";
+            Version = "0.0.10.2";
             ServerIP = "127.0.0.1";
             ServerPort = 33533;
         }
