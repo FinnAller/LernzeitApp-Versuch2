@@ -25,6 +25,11 @@
             Style="{StaticResource Label}"
             Text=""
             x:Name="EventLocationLabel"/>
+        <Label
+            Style="{StaticResource Label}"
+            Text=""
+            x:Name="EventSlotsLabel"
+            />
         <Button
             Text="Teilnehmen"
             FontSize="22"

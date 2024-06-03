@@ -13,9 +13,11 @@ public partial class StudentModulOverviewPage : ContentPage
         string event_name = selectedEreigniss.Name;
         string event_starttime = $"Zeitraum: {selectedEreigniss.StartTime} - {selectedEreigniss.EndTime}";
         string event_location = $"Ort: {selectedEreigniss.Location}";
+        string event_slots = $"Freie Plätze: {selectedEreigniss.FreeSlots} von {selectedEreigniss.MaxSlots}";
         EventNameLabel.Text = event_name;
         EventBeginningLabel.Text = event_starttime;
         EventLocationLabel.Text = event_location;
+        EventSlotsLabel.Text = event_slots;
     }
     protected override void OnAppearing()
     {

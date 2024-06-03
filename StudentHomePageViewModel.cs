@@ -102,9 +102,9 @@ namespace LernzeitApp_Versuch2
             //List<Ereigniss> ereignisse = new List<Ereigniss>();
             List<Ereigniss> ereignisse = new List<Ereigniss>()//DEBUG
             {
-                new Ereigniss { Name = "Schach-AG", StartTime = "09:00", Location = "Raum A", FreeSlots = "8", EndTime = "9:45"},
-                new Ereigniss { Name = "Schule ohne Rassismus", StartTime = "10:30", Location = "Raum B", FreeSlots = "3", EndTime = "11:30"},
-                new Ereigniss { Name= "Philosophie", StartTime = "15:00", Location = "Raum D", FreeSlots = "2", EndTime = "16:45"},
+                new Ereigniss { Name = "Schach-AG", StartTime = "09:00", Location = "Raum A", FreeSlots = "8", EndTime = "9:45", MaxSlots = "16"},
+                new Ereigniss { Name = "Schule ohne Rassismus", StartTime = "10:30", Location = "Raum B", FreeSlots = "3", EndTime = "11:30", MaxSlots = "25"},
+                new Ereigniss { Name= "Philosophie", StartTime = "15:00", Location = "Raum D", FreeSlots = "2", EndTime = "16:45", MaxSlots = "20"},
                 new Ereigniss { Name="Mathe-Lernzeit", StartTime = "12:55", Location = "Raum A", EndTime = "14:25"},
                 new Ereigniss { StartTime = "14:45", Location = "Raum D", Name = "Deutsch-Lernzeit", FreeSlots = "8", EndTime = "15:30"},
                 new Ereigniss { StartTime = "12:40", Location = "Raum E", FreeSlots = "16", Name = "Latein-Lernzeit", EndTime = "13:25"},

@@ -24,7 +24,7 @@
             <VerticalStackLayout>
                 <Label
                     Text="Diesjährige Fehlstunden"
-                    FontSize="32"
+                    FontSize="35"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     />
