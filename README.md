@@ -51,6 +51,8 @@ Aufbau der Antowrt:
 ## Regelmäßigkeit von Lernzeiten
 Nx2
 ![bitshifting](https://github.com/Joelbu537/LernzeitApp-Versuch2/assets/89338010/f7496b42-eb2e-4f11-a32b-6550c405fe4b)
+Um die regelmäßigkeit eines Moduls zu bestimmen, einfach die Zahlen addieren.
+Eine LErnzeit, die jeden Montag stattfindet, hat den Wert 33 (1 + 32)
 ## Wechseln des ausgewählten Moduls
 Wenn ein Schüler seine Meinung ändert und ein anderes Modul besuchen möchte,  
 muss er nur den Teilnehmen-Knopf der neuen Auswahl drücken.
