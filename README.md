@@ -1,13 +1,26 @@
 # Prototyp LernzeitApp
 Entwickelt von Jork Buchholz ab dem 24.05.2024 für das Lise Meitner Gymnasium Leverkusen
-## Aufbau
+# Aufbau
 Die App soll Schülern und Lehrern die Möglichkeit bieten, Lernzeiten und die zugehörigen Anwesenheiten per Handy einzusehen.
 Es stehen drei veschiedene Versionen zur verfügung:
-### Schüler
+## Schüler
 Schüler haben die Möglichkeit, die Lernzeiten des Tages anzusehen und der ihrer Wahl teilzunehmen, sollte noch platz sein.
-### Lehrer
+### Schüler-Unterseiten
+- StudentHomePage          (Eine Übersicht aller verfügbaren Module des Tages(es werden keine vollen angezeigt)
+- StudentMenuPage          (Ein Menü zum Navigieren zwischen den Unterseiten)
+- StudentModulOverviewPage (Eine flexible Seite zum darstellen der Infos eines ausgewählten Moduls)
+- StudentMissingPage       (Eine Auflistung aller Fehlstunden mit der Info entschulditg/unentschuldigt)
+## Lehrer
 Lehrer können einsehen, welche Schüler sich für ihre Lernzeit eingeschrieben haben,
 und bestätigen, ob sie anwesend sind.
+### Lehrer-Unterseiten
+- TeacherMyModulesPage       (Eine übersicht aller Module die dem angemeldeten Lehrer unterstellt sind)
+- TeacherAllModuleOverviewPage  (Eine Übersicht aller Module des Tages)
+- TeacherMenuPage            (Ein Menü zum Vavigieren zwischen den Unterseiten)
+- TeacherClassMissingPage    (Eine Liste der Schüler der eigenen Klasse und deren Fehlstunden)
+- TeacherStudentDBPage       (Eine Liste aller Schüler der Schule)
+- TeacherStudentOverviewPage (Eine fleixble Seite zum darstellen der Daten eines Schülers und all seiner Fehlstunden, und die Möglichkeit, diese zu entschuldigen)
+- TeacherModuleOverviewPage  (Eine übersicht eines Moduls und aller teilnehmenden Schüler, samt Möglichkeit, deren Anwesenheit zu bestätigen)
 ### Administrator
 Administratoren entfernen und fügen Lernzeiten hinzu, verwalten die anderen Benutzerkonten und haben uneingeschränkten zugriff auf die Datenbank.
 Diese Rolle solte nur Lehrern mit Wissen im Bereich Informatik und ranghohen Individuen zugeteilt werden.
