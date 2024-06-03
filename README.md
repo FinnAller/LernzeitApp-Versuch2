@@ -1,5 +1,7 @@
 # Prototyp LernzeitApp
 Entwickelt von Jork Buchholz ab dem 24.05.2024 für das Lise Meitner Gymnasium Leverkusen
+## Todo
+- [ ]StudentMissingLessonPage zu Ende bauen.
 # Aufbau
 Die App soll Schülern und Lehrern die Möglichkeit bieten, Lernzeiten und die zugehörigen Anwesenheiten per Handy einzusehen.
 Es stehen drei veschiedene Versionen zur verfügung:
