@@ -50,7 +50,7 @@ Aufbau der Antowrt:
 1 - 999 Content  
 ## Regelmäßigkeit von Lernzeiten
 Nx2
-
+![bitshifting](https://github.com/Joelbu537/LernzeitApp-Versuch2/assets/89338010/f7496b42-eb2e-4f11-a32b-6550c405fe4b)
 ## Wechseln des ausgewählten Moduls
 Wenn ein Schüler seine Meinung ändert und ein anderes Modul besuchen möchte,  
 muss er nur den Teilnehmen-Knopf der neuen Auswahl drücken.
