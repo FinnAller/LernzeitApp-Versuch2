@@ -22,15 +22,18 @@
 
         <ScrollView Grid.Row="1">
             <VerticalStackLayout>
-                <CollectionView ItemsSource="{Binding YourEventList}">
+                <Label
+                    Text="Diesjährige Fehlstunden"
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    />
+                <CollectionView ItemsSource="{Binding MissingLessons}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid
                             BackgroundColor="#FF6666"
                             Margin="5, 10, 0, 10">
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnMissingTapped"/>
-                                </Grid.GestureRecognizers>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto"/>
