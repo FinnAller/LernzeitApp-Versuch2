@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+﻿using System.Diagnostics;
+using System.Net.Sockets;
 using System.Text;
 
 namespace LernzeitApp_Versuch2
@@ -41,42 +42,24 @@ namespace LernzeitApp_Versuch2
                             File.Delete(logindatapath);
                         }
                         else
-                        {/*
-                            DEBUG
-                            TcpClient client = new TcpClient();
-                            LernzeitApp_Versuch2.AppInfo appinfo = new AppInfo();
-                            client.Connect(appinfo.ServerIP, appinfo.ServerPort);
-                            NetworkStream stream = client.GetStream();
-                            byte[] message = Encoding.UTF8.GetBytes($"verify\r\n{email}\r\n{hash}");
-                            await stream.WriteAsync(message, 0, message.Length);
-                            byte[] responseBytes = new byte[256];
-                            int bytes = await stream.ReadAsync(responseBytes, 0, responseBytes.Length);
-                            string responsestring = Encoding.UTF8.GetString(responseBytes);
-                            string[] response = responsestring.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-                            if(response.Length == 2 && response[0] == "verify")
+                        {
+                            int acces = await VerifyAsync(email, hash);
+                            switch (acces)
                             {
-                                switch (response[1])
-                                {
-                                    case "0":
-                                        File.Delete(logindatapath);
-                                        break;
-                                    case "1":
-                                        await Navigation.PushModalAsync(new StudentHomePage());
-                                        break;
-                                    case "2":
-                                        //LehrerLogin Hier!
-                                        break;
-                                    default:
-                                        Exception InvalidResponse = new Exception("Server response invalid");
-                                        TriggerError(InvalidResponse);
-                                        break;
-                                }
+                                case 0:
+                                    File.Delete(logindatapath);
+                                    break;
+                                case 1:
+                                    await Navigation.PushModalAsync(new StudentHomePage());
+                                    break;
+                                case 2:
+                                    //LehrerLogin Hier!
+                                    break;
+                                default:
+                                    Exception InvalidResponse = new Exception("Server response invalid");
+                                    TriggerError(InvalidResponse);
+                                    break;
                             }
-                            else
-                            {
-                                Exception InvalidResponse = new Exception("Server response invalid");
-                                TriggerError(InvalidResponse);
-                            }*/
                         }
                     }
                     else
@@ -95,6 +78,52 @@ namespace LernzeitApp_Versuch2
         {
             await Navigation.PushAsync(new ErrorPage(exception));
         }
+        private async Task<int> VerifyAsync(string username, string password)
+        {
+            try
+            {
+                TcpClient client = new TcpClient();
+                LernzeitApp_Versuch2.AppInfo appInfo = new LernzeitApp_Versuch2.AppInfo();
+                await client.ConnectAsync(appInfo.ServerIP, appInfo.ServerPort);
+                NetworkStream stream = client.GetStream();
+                byte[] verify_message = Encoding.UTF8.GetBytes($"login\r\n{username}\r\n{password}");
+                await stream.WriteAsync(verify_message, 0, verify_message.Length);
+
+                // Read
+                byte[] buffer = new byte[1024];
+                int bytesread = await stream.ReadAsync(buffer, 0, buffer.Length);
+                string response_encoded = Encoding.UTF8.GetString(buffer, 0, bytesread);
+                string[] content = response_encoded.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+
+                if (content.Length >= 2 && content[0] == "login")
+                {
+                    switch (content[1])
+                    {
+                        case "0":
+                            Debug.WriteLine("Wrong pwd");
+                            return 0;
+                        case "1":
+                            Debug.WriteLine("Student");
+                            return 1;
+                        case "2":
+                            Debug.WriteLine("Teacher");
+                            return 2;
+                        default:
+                            return -1;
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("really corrupted");
+                    return -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                TriggerError(ex);
+                return -1;
+            }
+        }
     }
     public class AppInfo
     {
@@ -105,7 +134,7 @@ namespace LernzeitApp_Versuch2
         public AppInfo()
         {
             LoginPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "login.dat");
-            Version = "0.0.12";
+            Version = "0.0.12.1";
             ServerIP = "127.0.0.1";
             ServerPort = 33533;
         }
