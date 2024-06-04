@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace LernzeitApp_Versuch2
+namespace LernzeitApp_Versuch2.CorePages
 {
     public static class MauiProgram
     {
@@ -16,7 +16,7 @@ namespace LernzeitApp_Versuch2
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

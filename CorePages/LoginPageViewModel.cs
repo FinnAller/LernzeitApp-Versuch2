@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls;
 
-namespace LernzeitApp
+namespace LernzeitApp_Versuch2.CorePages
 {
     public class LoginPageViewModel : BindableObject
     {

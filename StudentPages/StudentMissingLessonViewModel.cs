@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LernzeitApp_Versuch2
+namespace LernzeitApp_Versuch2.StudentPages
 {
     public class Fehlstunde : INotifyPropertyChanged
     {

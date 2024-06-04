@@ -5,7 +5,7 @@ public partial class StudentMissingLessonPage : ContentPage
 	public StudentMissingLessonPage()
 	{
 		InitializeComponent();
-		BindingContext = new StudentMissingLessonViewModel();
+		BindingContext = new LernzeitApp_Versuch2.StudentPages.StudentMissingLessonViewModel();
 	}
 	private async void OnMenuClicked(object sender, EventArgs e)
 	{

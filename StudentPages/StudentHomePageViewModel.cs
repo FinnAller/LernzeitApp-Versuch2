@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LernzeitApp_Versuch2
+namespace LernzeitApp_Versuch2.StudentPages
 {
     public class Ereigniss : INotifyPropertyChanged
     {
@@ -113,7 +113,7 @@ namespace LernzeitApp_Versuch2
                 new Ereigniss { StartTime = "9:00", Location = "Raum D", FreeSlots = "5", Name = "Kunst-AG", EndTime = "10:30"},
                 new Ereigniss { StartTime = "15:05", Location = "Raum B", FreeSlots = "14", Name = "SV-Sitzung", EndTime = "16:50"}
             };//DEBUG END
-            LernzeitApp_Versuch2.AppInfo info = new AppInfo();
+            AppInfo info = new AppInfo();
             try
             {
                 TcpClient client = new TcpClient();

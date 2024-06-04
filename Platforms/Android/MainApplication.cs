@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Runtime;
+using LernzeitApp_Versuch2.CorePages;
 
 namespace LernzeitApp_Versuch2
 {

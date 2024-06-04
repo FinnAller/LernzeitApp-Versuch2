@@ -66,28 +66,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="ErrorPage.xaml">
+	  <MauiXaml Update="CorePages\ErrorPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="InfoPage.xaml">
+	  <MauiXaml Update="CorePages\InfoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="LoginPage.xaml">
+	  <MauiXaml Update="CorePages\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="StudentHomePage.xaml">
+	  <MauiXaml Update="StudentPages\StudentHomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="StudentInfoPage.xaml">
+	  <MauiXaml Update="StudentPages\StudentInfoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="StudentMenuPage.xaml">
+	  <MauiXaml Update="StudentPages\StudentMenuPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="StudentMissingLessonPage.xaml">
+	  <MauiXaml Update="StudentPages\StudentMissingLessonPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="StudentModulOverviewPage.xaml">
+	  <MauiXaml Update="StudentPages\StudentModulOverviewPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

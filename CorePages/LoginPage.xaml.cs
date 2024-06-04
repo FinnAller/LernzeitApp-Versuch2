@@ -1,5 +1,5 @@
-using LernzeitApp;
 using LernzeitApp_Versuch2;
+using LernzeitApp_Versuch2.CorePages;
 using System;
 using System.Diagnostics;
 using System.Net.Sockets;
@@ -36,8 +36,8 @@ namespace LernzeitApp_Versuch2
                 string hash = BitConverter.ToString(hash_bytes).Replace("-", "").ToLower();
                 GC.Collect();
                 password = "";
-                //int acces = Verify(email, hash); //1 = student 2 = teacher 3 = wrong pwd -1 = error
-                int acces = 1; //DEBUG
+                int acces = await VerifyAsync(email, hash); //1 = student 2 = teacher 0 = wrong pwd -1 = error
+                //int acces = 1; //DEBUG
                 if (acces == -1)
                 {
                     Exception ex = new Exception("Data integrity compromised!");
@@ -74,60 +74,55 @@ namespace LernzeitApp_Versuch2
                 viewModel.ErrorMessage = "Die eingegebenen Daten sind nicht korrekt!";
             }
         }
-        int Verify(string username, string password)
+        private async Task<int> VerifyAsync(string username, string password)
         {
             try
             {
                 TcpClient client = new TcpClient();
                 LernzeitApp_Versuch2.AppInfo appInfo = new LernzeitApp_Versuch2.AppInfo();
-                client.Connect(appInfo.ServerIP, appInfo.ServerPort);
+                await client.ConnectAsync(appInfo.ServerIP, appInfo.ServerPort);
                 NetworkStream stream = client.GetStream();
                 byte[] verify_message = Encoding.UTF8.GetBytes($"login\r\n{username}\r\n{password}");
-                stream.Write(verify_message, 0, verify_message.Length);
-                //Read
+                await stream.WriteAsync(verify_message, 0, verify_message.Length);
+
+                // Read
                 byte[] buffer = new byte[1024];
-                int bytesread = 0;
-                while ((bytesread = stream.Read(buffer, 0, buffer.Length)) > 0)
+                int bytesread = await stream.ReadAsync(buffer, 0, buffer.Length);
+                string response_encoded = Encoding.UTF8.GetString(buffer, 0, bytesread);
+                string[] content = response_encoded.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+
+                if (content.Length >= 2 && content[0] == "login")
                 {
-                    string response_encoded = Encoding.UTF8.GetString(buffer);
-                    string[] content = response_encoded.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-                    if (content[0] == "login")
+                    switch (content[1])
                     {
-                        if (content[1] == "0")
-                        {
+                        case "0":
+                            Debug.WriteLine("Wrong pwd");
                             return 0;
-                        }
-                        else if (content[1] == "1")
-                        {
+                        case "1":
+                            Debug.WriteLine("Student");
                             return 1;
-                        }
-                        else if (content[1] == "2")
-                        {
+                        case "2":
+                            Debug.WriteLine("Teacher");
                             return 2;
-                        }
-                        else
-                        {
+                        default:
                             return -1;
-                        }
                     }
-                    else
-                    {
-                        return -1;
-                    }
-
                 }
-
+                else
+                {
+                    Debug.WriteLine("really corrupted");
+                    return -1;
+                }
             }
             catch (Exception ex)
             {
                 TriggerError(ex);
                 return -1;
             }
-            return -1;
         }
         private async void TriggerError(object exception)
         {
-            await Navigation.PushAsync(new ErrorPage(exception));
+            await Navigation.PushModalAsync(new ErrorPage(exception));
         }
         private async void OnBackClicked(object sender, EventArgs e)
         {
