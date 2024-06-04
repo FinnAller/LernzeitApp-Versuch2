@@ -1,7 +1,8 @@
 # Prototyp LernzeitApp
 Entwickelt von Jork Buchholz ab dem 24.05.2024 für das Lise Meitner Gymnasium Leverkusen
 ## Todo
-- [ ] StudentMissingLessonPage zu Ende bauen.
+- [x] StudentMissingLessonPage zu Ende bauen.
+- [ ] StudentMissingLessonPage remote content
 # Aufbau
 Die App soll Schülern und Lehrern die Möglichkeit bieten, Lernzeiten und die zugehörigen Anwesenheiten per Handy einzusehen.
 Es stehen drei veschiedene Versionen zur verfügung:
@@ -48,6 +49,11 @@ Aufbau der Antowrt:
 ```getmods\rSchachAG\n9:00\n9:45\n4203\n8\n15\rSchule ohne Rassismus\n10:30\n11:00\n3009\n8\n3\n20\n```  
 0.      Header  
 1 - 999 Content  
+## Regelmäßigkeit von Lernzeiten
+Nx2
+![bitshifting](https://github.com/Joelbu537/LernzeitApp-Versuch2/assets/89338010/f7496b42-eb2e-4f11-a32b-6550c405fe4b)
+Um die regelmäßigkeit eines Moduls zu bestimmen, einfach die Zahlen addieren.
+Eine LErnzeit, die jeden Montag stattfindet, hat den Wert 33 (1 + 32)
 ## Wechseln des ausgewählten Moduls
 Wenn ein Schüler seine Meinung ändert und ein anderes Modul besuchen möchte,  
 muss er nur den Teilnehmen-Knopf der neuen Auswahl drücken.
