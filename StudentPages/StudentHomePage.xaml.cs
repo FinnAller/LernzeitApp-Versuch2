@@ -14,6 +14,11 @@ public partial class StudentHomePage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
+        var viewModel = BindingContext as HomePageViewModel;
+        if (viewModel != null)
+        {
+            await viewModel.InitializeAsync();
+        }
     }
     private async void OnEventTapped(object sender, EventArgs e)
     {

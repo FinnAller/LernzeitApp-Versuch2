@@ -26,6 +26,7 @@ namespace LernzeitApp_Versuch2
             base.OnAppearing();
             LernzeitApp_Versuch2.AppInfo info = new AppInfo();
             string logindatapath = info.LoginPath;
+            /*
             if (File.Exists(logindatapath))
             {
                 try
@@ -72,7 +73,7 @@ namespace LernzeitApp_Versuch2
                 {
                     TriggerError(ex);
                 }
-            }
+            }*/
         }
         private async void TriggerError(object exception)
         {
@@ -134,7 +135,7 @@ namespace LernzeitApp_Versuch2
         public AppInfo()
         {
             LoginPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "login.dat");
-            Version = "0.0.12.1";
+            Version = "0.1";
             ServerIP = "127.0.0.1";
             ServerPort = 33533;
         }

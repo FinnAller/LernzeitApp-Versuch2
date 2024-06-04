@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
@@ -25,16 +26,10 @@ namespace LernzeitApp_Versuch2.StudentPages
             set { _startTime = value; OnPropertyChanged(); }
         }
         private string _endTime;
-        public string EndTime//Not implemented
+        public string EndTime
         {
-            get
-            {
-                return _endTime;
-            }
-            set
-            {
-                _endTime = value; OnPropertyChanged();
-            }
+            get { return _endTime; }
+            set { _endTime = value; OnPropertyChanged(); }
         }
 
         private string _location;
@@ -46,38 +41,20 @@ namespace LernzeitApp_Versuch2.StudentPages
         private string _freeSlots;
         public string FreeSlots
         {
-            get
-            {
-                return _freeSlots;
-            }
-            set
-            {
-                _freeSlots = value; OnPropertyChanged();
-            }
+            get { return _freeSlots; }
+            set { _freeSlots = value; OnPropertyChanged(); }
         }
         private string _maxSlots;
-        public string MaxSlots //Not implemented
+        public string MaxSlots
         {
-            get
-            {
-                return _maxSlots;
-            }
-            set
-            {
-                _maxSlots = value; OnPropertyChanged();
-            }
+            get { return _maxSlots; }
+            set { _maxSlots = value; OnPropertyChanged(); }
         }
         private int _id;
         public int Id
         {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                _id = value; OnPropertyChanged();
-            }
+            get { return _id; }
+            set { _id = value; OnPropertyChanged(); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -88,75 +65,98 @@ namespace LernzeitApp_Versuch2.StudentPages
         }
     }
 
-    public class HomePageViewModel
+    public class HomePageViewModel :INotifyPropertyChanged
     {
-        public List<Ereigniss> YourEventList { get; set; }
+        private List<Ereigniss> _yourEventList;
+        public List<Ereigniss> YourEventList
+        {
+            get => _yourEventList;
+            set
+            {
+                _yourEventList = value;
+                OnPropertyChanged();
+            }
+        }
 
         public HomePageViewModel()
         {
-            List<Ereigniss> ereignisse = GetModules();
-            YourEventList = ereignisse;
+            
         }
-        private List<Ereigniss> GetModules()
+
+        public async Task InitializeAsync()
         {
-            //List<Ereigniss> ereignisse = new List<Ereigniss>();
-            List<Ereigniss> ereignisse = new List<Ereigniss>()//DEBUG
+            await Task.Delay(1000);
+            YourEventList = await GetModules();
+            if(YourEventList != null && YourEventList.Count > 0)
             {
-                new Ereigniss { Name = "Schach-AG", StartTime = "09:00", Location = "Raum A", FreeSlots = "8", EndTime = "9:45", MaxSlots = "16"},
-                new Ereigniss { Name = "Schule ohne Rassismus", StartTime = "10:30", Location = "Raum B", FreeSlots = "3", EndTime = "11:30", MaxSlots = "25"},
-                new Ereigniss { Name= "Philosophie", StartTime = "15:00", Location = "Raum D", FreeSlots = "2", EndTime = "16:45", MaxSlots = "20"},
-                new Ereigniss { Name="Mathe-Lernzeit", StartTime = "12:55", Location = "Raum A", EndTime = "14:25"},
-                new Ereigniss { StartTime = "14:45", Location = "Raum D", Name = "Deutsch-Lernzeit", FreeSlots = "8", EndTime = "15:30"},
-                new Ereigniss { StartTime = "12:40", Location = "Raum E", FreeSlots = "16", Name = "Latein-Lernzeit", EndTime = "13:25"},
-                new Ereigniss { StartTime = "15:05", Location = "Raum A", Name = "Deutsch ?-Stunde", FreeSlots = "0", EndTime = "16:00"},
-                new Ereigniss { StartTime = "17:30", Location = "Raum C", Name = "Roboter-AG", FreeSlots = "1", EndTime = "18:15"},
-                new Ereigniss { StartTime = "9:00", Location = "Raum D", FreeSlots = "5", Name = "Kunst-AG", EndTime = "10:30"},
-                new Ereigniss { StartTime = "15:05", Location = "Raum B", FreeSlots = "14", Name = "SV-Sitzung", EndTime = "16:50"}
-            };//DEBUG END
-            AppInfo info = new AppInfo();
+                Debug.WriteLine("Modules succesfully loaded!");
+            }
+            else
+            {
+                Debug.WriteLine("ERROR!");
+            }
+        }
+
+        private async Task<List<Ereigniss>> GetModules()
+        {
+            List<Ereigniss> ereignisse = new List<Ereigniss>();
+            LernzeitApp_Versuch2.AppInfo appInfo = new LernzeitApp_Versuch2.AppInfo();
             try
             {
-                TcpClient client = new TcpClient();
-                client.Connect(info.ServerIP, info.ServerPort);
-                NetworkStream stream = client.GetStream();
-                byte[] message = Encoding.UTF8.GetBytes($"getmods");
-                stream.Write(message, 0, message.Length);
-                byte[] responseBytes = new byte[256];
-                Thread.Sleep(300);
-                int bytes = stream.Read(responseBytes, 0, responseBytes.Length);
-                string responsestring = Encoding.UTF8.GetString(responseBytes);
-                string[] response = responsestring.Split(new string[] { "\r" }, StringSplitOptions.None);
-                if (response[0] == "getmods")
+                using (TcpClient client = new TcpClient())
                 {
-                    for (int i = 1; i < response.Length; i++)
+                    await client.ConnectAsync(appInfo.ServerIP, appInfo.ServerPort);
+                    using (NetworkStream stream = client.GetStream())
                     {
-                        Ereigniss current = new Ereigniss();
-                        string[] parameters = response[i].Split(new string[] { "\n" }, StringSplitOptions.None);
-                        current.Name = parameters[0];
-                        current.StartTime = parameters[1];
-                        current.EndTime = parameters[2];
-                        current.Location = parameters[3];
-                        current.FreeSlots = parameters[4];
-                        current.MaxSlots = parameters[5];
-                        ereignisse.Add(current);
+                        byte[] message = Encoding.UTF8.GetBytes("getmods");
+                        await stream.WriteAsync(message, 0, message.Length);
+
+                        // Read
+                        byte[] buffer = new byte[1024];
+                        int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                        string responseEncoded = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                        string[] response = responseEncoded.Split(new string[] { "\r" }, StringSplitOptions.None);
+                        if (response[0] == "getmods")
+                        {
+                            for (int i = 1; i < response.Length; i++)
+                            {
+                                Ereigniss current = new Ereigniss();
+                                string[] parameters = response[i].Split(new string[] { "\n" }, StringSplitOptions.None);
+                                current.Name = parameters[0];
+                                current.StartTime = parameters[1];
+                                current.EndTime = parameters[2];
+                                current.Location = parameters[3];
+                                current.FreeSlots = parameters[4];
+                                current.MaxSlots = parameters[5];
+                                ereignisse.Add(current);
+                            }
+                        }
+                        else
+                        {
+                            ereignisse.Add(new Ereigniss { Name = "Error" });
+                        }
+                        // Debugging: Ausgabe der geladenen Ereignisse
+                        foreach (var ereignis in ereignisse)
+                        {
+                            Debug.WriteLine($"Loaded event: {ereignis.Name}, {ereignis.StartTime}, {ereignis.EndTime}");
+                        }
+
+                        stream.Close();
+                        client.Close();
                     }
-                    return ereignisse;
-                }
-                else
-                {
-                    Ereigniss error_ereigniss = new Ereigniss();
-                    error_ereigniss.Name = "Error";
-                    ereignisse.Add(error_ereigniss);
-                    return ereignisse;
                 }
             }
             catch (Exception ex)
             {
-                Ereigniss error_ereigniss = new Ereigniss();
-                error_ereigniss.Name = "Error";
-                ereignisse.Add(error_ereigniss);
-                return ereignisse;
+                ereignisse.Add(new Ereigniss { Name = "Error" });
             }
+            return ereignisse;
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
