@@ -44,7 +44,9 @@ namespace LernzeitApp_Versuch2.StudentPages
             List<Fehlstunde> fehlstunden = new List<Fehlstunde>()
             {
                 new Fehlstunde { Date = "12.12.2023", Excused = "Nein"},
-                new Fehlstunde { Date = "17.2.2024", Excused = "Ja"}
+                new Fehlstunde { Date = "17.2.2024", Excused = "Ja"},
+                new Fehlstunde { Date = "29.4.2024", Excused = "Ja"},
+                new Fehlstunde { Date = "30.4.2024", Excused = "Ja"}
             };
             //DEBUG END
             return fehlstunden;
