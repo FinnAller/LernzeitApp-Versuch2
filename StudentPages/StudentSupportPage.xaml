@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LernzeitApp_Versuch2.StudentSupportPage"
+             Title="StudentSupportPage">
+    <VerticalStackLayout>
+        <Label
+            Style = "{StaticResource HeadLine}"
+            Text = "Support"
+            />
+        <Editor
+            Text = ""
+            Preview = "Gib dein Problem, und wie es entstanden ist, hier möglichst detalliert an."
+            HeightRequest = "120"
+            AutoSize = "TextChanges"
+            MaxLength = "1000"
+            />
+        <Button
+            Style = "{StaticResource Button}"
+            Text = "Absenden"
+            Clicked = "OnSubmitClicked"
+            />
+        <Label
+            Style = "{StaticResource Label}"
+            TextColor = "Red"
+            x:Name = "SubmitMessageLabel"
+        />
+    </VerticalStackLayout>
+</ContentPage>
